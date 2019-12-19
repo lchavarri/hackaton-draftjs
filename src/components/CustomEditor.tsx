@@ -1,25 +1,13 @@
 import React, { useState } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { Editor, RichUtils } from "draft-js";
 
 import DraftControls from "./DraftControls";
-import Video from "./VideoRenderer";
+import CustomBlockRenderer from "./CustomRenderer";
 import { addEntity } from "../utils/DraftUtils";
 
 import "../assets/Draft.scss";
 import "../assets/DraftOverrides.scss";
 import "../assets/RichEditor.scss";
-
-const customBlockRenderer = block => {
-  console.log("$$$ customBlockRenderer render");
-  if (block.getType() !== "atomic") {
-    return null;
-  }
-
-  return {
-    component: Video,
-    editable: false
-  };
-};
 
 const customBlockStyler = contentBlock => {
   const type = contentBlock.getType();
@@ -29,33 +17,36 @@ const customBlockStyler = contentBlock => {
 };
 
 const CustomEditor = (props: any) => {
-  console.log("$$$ Custom Editor");
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [url, setUrl] = useState(
+  const { editorState, mutateEditorState } = props;
+
+  const [videoUrl, setVideoUrl] = useState(
     "https://www.youtube.com/embed/9CS7j5I6aOc?autoplay=true"
   );
+  const [imageUrl, setImageUrl] = useState(
+    "https://media.giphy.com/media/mWUuD8qPSi5B6/giphy.gif"
+  );
 
-  function handleAddVideo() {
+  function handleAddMedia(type, src) {
     const newEditorState = addEntity(editorState, {
-      type: "custom",
+      type,
       mutability: "IMMUTABLE",
-      data: { src: url }
+      data: { src }
     });
-    setEditorState(newEditorState);
+    mutateEditorState(newEditorState);
   }
 
   function toggleBlockType(blockType: string) {
-    setEditorState(RichUtils.toggleBlockType(editorState, blockType));
+    mutateEditorState(RichUtils.toggleBlockType(editorState, blockType));
   }
 
   function toggleInlineStyle(inlineStyle: string) {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, inlineStyle));
+    mutateEditorState(RichUtils.toggleInlineStyle(editorState, inlineStyle));
   }
 
   function handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
-      setEditorState(newState);
+      mutateEditorState(newState);
       return "handled";
     }
     return "not-handled";
@@ -63,18 +54,36 @@ const CustomEditor = (props: any) => {
 
   return (
     <div>
-      <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-      <button onClick={handleAddVideo}>Add video</button>
+      <div>
+        <input
+          type="text"
+          value={videoUrl}
+          onChange={e => setVideoUrl(e.target.value)}
+        />
+        <button onClick={() => handleAddMedia("video", videoUrl)}>
+          Add video
+        </button>
+      </div>
+      <div>
+        <input
+          type="text"
+          value={imageUrl}
+          onChange={e => setImageUrl(e.target.value)}
+        />
+        <button onClick={() => handleAddMedia("image", imageUrl)}>
+          Add image
+        </button>
+      </div>
       <DraftControls
         editorState={editorState}
         toggleBlockType={toggleBlockType}
         toggleInlineStyle={toggleInlineStyle}
       ></DraftControls>
       <Editor
-        blockRendererFn={customBlockRenderer}
+        blockRendererFn={CustomBlockRenderer}
         blockStyleFn={customBlockStyler}
         editorState={editorState}
-        onChange={editorState => setEditorState(editorState)}
+        onChange={mutateEditorState}
         handleKeyCommand={handleKeyCommand}
       />
     </div>

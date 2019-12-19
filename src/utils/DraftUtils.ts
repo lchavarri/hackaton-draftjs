@@ -20,7 +20,6 @@ export const addEntity = (
   editorState: EditorState,
   entity: IDraftEntity
 ): EditorState => {
-  console.log("$$$ Add entity");
   const { type, mutability, data } = entity;
   const contentStateWithEntity = editorState
     .getCurrentContent()
