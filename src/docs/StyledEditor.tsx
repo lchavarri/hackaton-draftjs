@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 
-import BlockStyleControls from "./BlockStylesControls";
-import "./Draft.scss";
-import "./RichEditor.scss";
-import InlineStyleControls from "./InlineStylesControls";
+import BlockStyleControls from "../demo/BlockStylesControls";
+import InlineStyleControls from "../demo/InlineStylesControls";
 
-const DemoEditor = (props: any) => {
+const StyledEditor = (props: any) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   function myBlockStyleFn(contentBlock) {
@@ -55,4 +53,4 @@ const DemoEditor = (props: any) => {
   );
 };
 
-export default DemoEditor;
+export default StyledEditor;

@@ -8,6 +8,7 @@ const INLINE_STYLES = [
   { label: "Underline", style: "UNDERLINE" },
   { label: "Monospace", style: "CODE" }
 ];
+
 const InlineStyleControls = props => {
   const currentStyle = props.editorState.getCurrentInlineStyle();
 
