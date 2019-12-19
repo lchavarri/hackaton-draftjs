@@ -1,0 +1,22 @@
+.app-wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+
+  .controls-wrapper {
+    background-color: ghostwhite;
+    border: 1px solid gainsboro;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
+
+  //Overrides:
+  .RichEditor-controls {
+  }
+  .superFancyBlockquote {
+    color: #999;
+    font-family: "Hoefler Text", Georgia, serif;
+    font-style: italic;
+    text-align: center;
+  }
+}
