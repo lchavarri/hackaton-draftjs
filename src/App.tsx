@@ -1,6 +1,6 @@
 import React from "react";
 
-import CustomEditor from "./demo/CustomEditor";
+import CustomEditor from "./components/CustomEditor";
 
 import "./App.scss";
 

@@ -1,31 +1,14 @@
-import React, { useState, useMemo } from "react";
-import { AtomicBlockUtils, Editor, EditorState, RichUtils } from "draft-js";
+import React, { useState } from "react";
+import { Editor, EditorState, RichUtils } from "draft-js";
 
 import BlockStyleControls from "./BlockStylesControls";
 import InlineStyleControls from "./InlineStylesControls";
-import "./Draft.scss";
-import "./DraftOverrides.scss";
-import "./RichEditor.scss";
+import Video from "./VideoRenderer";
+import { addEntity } from "../utils/DraftUtils";
 
-type IDraftEntity = {
-  type: string;
-  mutability: "IMMUTABLE" | "MUTABLE" | "SEGMENTED";
-  data?: any;
-};
-
-const demoUrl = "https://www.youtube.com/embed/9CS7j5I6aOc?autoplay=true";
-
-const Video = props => {
-  const entity = props.contentState.getEntity(props.block.getEntityAt(0));
-  const { src } = entity.getData();
-  const memoizedJsx = useMemo(() => {
-    console.log("$$$ Video render");
-    return (
-      <iframe width="300" height="300" src={src} allow="autoplay;"></iframe>
-    );
-  }, [src]);
-  return memoizedJsx;
-};
+import "../assets/Draft.scss";
+import "../assets/DraftOverrides.scss";
+import "../assets/RichEditor.scss";
 
 const customBlockRenderer = block => {
   console.log("$$$ customBlockRenderer render");
@@ -46,29 +29,12 @@ const customBlockStyler = contentBlock => {
   }
 };
 
-const addEntity = (
-  editorState: EditorState,
-  entity: IDraftEntity
-): EditorState => {
-  console.log("$$$ Add entity");
-  const { type, mutability, data } = entity;
-  const contentStateWithEntity = editorState
-    .getCurrentContent()
-    .createEntity(type, mutability, data);
-
-  return AtomicBlockUtils.insertAtomicBlock(
-    EditorState.set(editorState, {
-      currentContent: contentStateWithEntity
-    }),
-    contentStateWithEntity.getLastCreatedEntityKey(),
-    " "
-  );
-};
-
 const CustomEditor = (props: any) => {
   console.log("$$$ Custom Editor");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [url, setUrl] = useState(demoUrl);
+  const [url, setUrl] = useState(
+    "https://www.youtube.com/embed/9CS7j5I6aOc?autoplay=true"
+  );
 
   const handleConfirm = () => {
     const newEditorState = addEntity(editorState, {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 
-import BlockStyleControls from "../demo/BlockStylesControls";
-import InlineStyleControls from "../demo/InlineStylesControls";
+import BlockStyleControls from "../components/BlockStylesControls";
+import InlineStyleControls from "../components/InlineStylesControls";
 
 const StyledEditor = (props: any) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
