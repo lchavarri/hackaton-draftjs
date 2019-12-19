@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 
-import BlockStyleControls from "./BlockStylesControls";
-import InlineStyleControls from "./InlineStylesControls";
+import DraftControls from "./DraftControls";
 import Video from "./VideoRenderer";
 import { addEntity } from "../utils/DraftUtils";
 
@@ -36,14 +35,14 @@ const CustomEditor = (props: any) => {
     "https://www.youtube.com/embed/9CS7j5I6aOc?autoplay=true"
   );
 
-  const handleConfirm = () => {
+  function handleAddVideo() {
     const newEditorState = addEntity(editorState, {
       type: "custom",
       mutability: "IMMUTABLE",
       data: { src: url }
     });
     setEditorState(newEditorState);
-  };
+  }
 
   function toggleBlockType(blockType: string) {
     setEditorState(RichUtils.toggleBlockType(editorState, blockType));
@@ -65,17 +64,12 @@ const CustomEditor = (props: any) => {
   return (
     <div>
       <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-      <button onClick={handleConfirm}>Add video</button>
-      <div className="controls-wrapper">
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={toggleBlockType}
-        />
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={toggleInlineStyle}
-        />
-      </div>
+      <button onClick={handleAddVideo}>Add video</button>
+      <DraftControls
+        editorState={editorState}
+        toggleBlockType={toggleBlockType}
+        toggleInlineStyle={toggleInlineStyle}
+      ></DraftControls>
       <Editor
         blockRendererFn={customBlockRenderer}
         blockStyleFn={customBlockStyler}
