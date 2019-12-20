@@ -3,3 +3,4 @@ build/**.ele
 build/debug/*
 build/release/*
 .cache
+.vscode
