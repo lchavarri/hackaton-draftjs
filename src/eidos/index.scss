@@ -1,0 +1,12 @@
+//scss variables for the whole app
+@import './assets/variables';
+
+//semantic overrides and custom framework
+@import '../shared/ui/assets/buttons';
+@import '../shared/ui/assets/dropdown';
+@import '../shared/ui/assets/menu';
+@import '../shared/ui/assets/layout';
+@import '../shared/ui/assets/message';
+//end frameworks
+
+//custom styles

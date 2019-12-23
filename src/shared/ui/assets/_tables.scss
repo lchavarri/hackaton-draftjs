@@ -1,0 +1,18 @@
+.table-responsive-x {
+  overflow: hidden;
+  overflow-x: auto;
+
+  @extend .custom-scroll;
+}
+
+.table {
+  &.ui.celled tr th {
+    background-color: transparent;
+    font-weight: $font-weight-normal;
+  }
+
+  &.ui.celled tr td,
+  &.ui.celled tr th {
+    border-color: $border-color;
+  }
+}

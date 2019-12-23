@@ -1,0 +1,90 @@
+body {
+  background-color: transparent;
+  color: $primary;
+  font-family: $font-default;
+}
+
+body,
+.ui.menu {
+  font-size: rem(13px);
+}
+
+.ui.menu {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: $hover;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: inherit;
+  font-weight: $font-weight-normal;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font-family: inherit;
+}
+
+.segment.layout,
+p {
+  font-size: rem(13px);
+}
+
+.main-s,
+#root {
+  background-color: $background-color;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.app-main {
+  border: 1px solid $border-color;
+}
+
+.stage-empty {
+  color: $text;
+  padding: rem(30px 35px);
+  z-index: 0;
+  text-align: center;
+
+  h1 {
+    font-size: rem(20px);
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    max-width: rem(360px);
+    margin: 0 auto;
+  }
+}
+
+.menu-wrapper.shadow {
+  box-shadow: rem(0 2px 10px) 0 fade-out($shadow, 1 - 0.251);
+}
+
+.eidos-actions-bar {
+  height: $bar-size-lg;
+  width: 100%;
+  padding: $eidos-base-padding;
+  z-index: $eidos-actions-z-index;
+  display: flex;
+  align-items: center;
+}

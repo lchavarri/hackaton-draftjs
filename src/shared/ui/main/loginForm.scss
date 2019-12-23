@@ -1,0 +1,42 @@
+@import '../../../assets/variables';
+
+$form-width: rem(350px);
+
+.login-form {
+  height: 100%;
+
+  > .grid {
+    margin: 0px;
+    width: 100%;
+  }
+
+  .logo {
+    margin-bottom: rem(44px);
+    width: rem(128px);
+  }
+
+  .ui.form {
+    .field {
+      margin-bottom: rem(24px);
+    }
+
+    .input {
+      max-width: $form-width;
+      margin: 0 auto;
+    }
+  }
+
+  .ui.message {
+    max-width: $form-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.ui.icon.input > i.icon {
+  opacity: 1;
+}
+
+.ui.input .icon {
+  color: $primary;
+}

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput component should match component snapshot 1`] = `
+<Input
+  className="search clear"
+  iconPosition="left"
+  id="testTerm"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onKeyDown={[Function]}
+  placeholder="Search"
+  type="text"
+  value="Init"
+>
+  <i
+    className="icon"
+  >
+    <mockConstructor />
+  </i>
+  <input />
+  <Button
+    as="button"
+    floated="right"
+    icon={true}
+    id="testResetInput"
+    onClick={[Function]}
+  >
+    <mockConstructor
+      aria-label="Delete Criteria"
+      className="icon"
+    />
+  </Button>
+</Input>
+`;

@@ -1,0 +1,50 @@
+// Split pane resizer styles
+.SplitPane.horizontal {
+  position: initial !important;
+
+  .Pane {
+    overflow: hidden;
+    transition: height 200ms ease-in-out;
+  }
+
+  &.dragging .Pane {
+    transition: none;
+  }
+}
+
+.Resizer {
+  z-index: 3;
+  box-sizing: border-box;
+  background-clip: padding-box;
+
+  &:hover {
+    transition: all 0.5s ease;
+  }
+
+  &.horizontal {
+    height: rem(8px);
+    margin: rem(-5px 0);
+    cursor: row-resize;
+    margin-left: calc(50% - #{rem(28px)});
+
+    width: rem(56px);
+    border-radius: rem(4px);
+
+    border-top: rem(5px) solid rgba(172, 172, 173, 0.8);
+    border-bottom: rem(5px) solid rgba(172, 172, 173, 0.8);
+    background-color: rgba(172, 172, 173, 0.7);
+  }
+
+  .hide-resizer & {
+    display: none;
+    border: none;
+  }
+}
+
+// Split Pane styles
+.horizontal.Pane1 {
+  border-bottom: rem(1px) solid rgb(225, 225, 225);
+}
+.horizontal.Pane2 {
+  height: rem(300px);
+}

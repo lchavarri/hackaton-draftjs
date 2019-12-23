@@ -1,0 +1,58 @@
+@import '../../assets/variables';
+
+.boolean-connector {
+  height: rem(46px);
+  position: relative;
+  width: rem(105px);
+
+  > * {
+    position: absolute;
+  }
+
+  img {
+    height: rem(46px);
+    left: 50%;
+    margin-left: rem(-7px);
+  }
+
+  .ui.dropdown {
+    border: 0 none;
+    font-family: inherit;
+    font-size: rem(13px);
+    padding: 0 0 0 rem(10px);
+    width: rem(144px);
+    height: rem(26px);
+    min-height: rem(26px);
+    border-radius: rem(13px);
+    background-color: #ffffff;
+    text-transform: lowercase;
+    top: rem(8px);
+
+    // Remove SUI font icon
+    > .dropdown.icon:before {
+      content: none;
+    }
+  }
+
+  .ui.fluid.dropdown > .dropdown.icon {
+    padding: rem(7px 13px 0 0);
+    top: rem(10px);
+  }
+
+  .item > .text {
+    white-space: nowrap;
+  }
+
+  .ui.dropdown > .text {
+    font-weight: $font-weight-normal;
+    margin: rem(3px 5px 0);
+
+    .filter & {
+      margin-top: 0;
+    }
+  }
+}
+
+.boolean-connector-wrapper {
+  width: 100%;
+}

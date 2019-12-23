@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditableLabel component should match component snapshot 1`] = `
+<div
+  className="editable-label  "
+>
+  <Popup
+    className="hidden"
+    disabled={false}
+    hideOnScroll={true}
+    offset={0}
+    on="hover"
+    open={true}
+    pinned={false}
+    popperDependencies={
+      Array [
+        "",
+        false,
+      ]
+    }
+    position="right center"
+    size="tiny"
+    trigger={
+      <input
+        className="editable-label-input material"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        title=""
+        type="text"
+      />
+    }
+    wide="very"
+  >
+    <mockConstructor
+      aria-label="Danger!"
+      color="inherit"
+    />
+     
+  </Popup>
+  <span
+    className="editable-label-text"
+  />
+  <span
+    className="editable-label-icon edit"
+    onClick={[Function]}
+  >
+    <mockConstructor
+      className="icon"
+    />
+  </span>
+</div>
+`;

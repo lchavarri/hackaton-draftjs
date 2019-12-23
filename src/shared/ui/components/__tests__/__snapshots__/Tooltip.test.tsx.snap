@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip component should match component snapshot 1`] = `
+<Popup
+  disabled={false}
+  offset={0}
+  on="hover"
+  pinned={false}
+  position="left center"
+  size="small"
+  wide="very"
+>
+  <mockConstructor
+    aria-label="Information"
+    color="green"
+    icon={[MockFunction]}
+  />
+   
+  <b>
+    Information
+  </b>
+   
+</Popup>
+`;

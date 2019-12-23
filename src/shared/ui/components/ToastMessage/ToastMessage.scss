@@ -1,0 +1,50 @@
+@import '../../assets/variables';
+
+.ui.toast.message {
+  width: rem(344px);
+  background-color: $black;
+  color: white;
+  min-height: rem(40px);
+  border-radius: rem(4px);
+  box-shadow: rem(0 2px 4px 0) rgba(0, 0, 0, 0.25);
+  margin-bottom: rem(1px);
+  left: rem(33%);
+  z-index: 2;
+  position: absolute;
+  top: auto;
+  margin-top: rem(-15px);
+  padding: rem(12px 19px);
+
+  .min & {
+    margin-top: rem(-11px);
+  }
+
+  .icon.close {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: rem(-12px);
+    width: rem(32px);
+    height: rem(15px);
+    color: white;
+    position: relative;
+    float: right;
+    opacity: 0.9;
+    z-index: 1;
+
+    &:before {
+      content: '';
+    }
+
+    svg {
+      width: rem(10px);
+      height: rem(16px);
+    }
+  }
+
+  p {
+    font-size: rem(11px);
+  }
+}

@@ -1,0 +1,82 @@
+@import '../../assets/variables.scss';
+
+$tag-height: 24px;
+$tag-gap-bottom: 8px;
+$tag-gap: 5px;
+
+.tags-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  user-select: none;
+  width: 100%;
+
+  .label {
+    background-color: white;
+    border: rem(1px) solid $border-color;
+    border-radius: rem(2px);
+    color: $primary;
+    cursor: grab;
+    height: rem($tag-height);
+    font-size: rem(13px);
+    font-weight: $font-weight-normal;
+    line-height: 1.3;
+    margin: rem(0 $tag-gap / 2 $tag-gap-bottom);
+    padding-bottom: rem(3px);
+    padding-right: rem(7px);
+    padding-top: rem(3px);
+    text-transform: lowercase;
+    position: relative;
+    transform: perspective(1px); //improve text rendering on dragging with GPU
+    display: inline-flex;
+    align-items: center;
+
+    &:first-child {
+      margin-left: rem($tag-gap / 2);
+    }
+
+    .icon:not(.button) {
+      height: rem(12px) !important;
+      width: rem(7px);
+      font-size: rem(10px);
+    }
+
+    .ui.button.xs.basic {
+      height: rem(12px);
+      margin-right: 0;
+      margin-left: rem(10px);
+    }
+
+    &.clicked {
+      cursor: grabbing;
+    }
+
+    &.is-hovered {
+      .button {
+        pointer-events: none;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        border-left: rem(1px) solid fade-out($primary, 0.7);
+        height: rem($tag-height);
+        position: absolute;
+        top: rem(-1px);
+        left: rem(-$tag-gap / 2 - 1px);
+      }
+    }
+
+    &.not-draggable {
+      cursor: auto;
+    }
+  }
+  .dragged-shadow {
+    opacity: 1 !important;
+  }
+
+  .sortable-ghost {
+    cursor: grabbing;
+    opacity: 0 !important;
+  }
+}

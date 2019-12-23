@@ -1,0 +1,17 @@
+//scss variables for the whole app
+@import 'assets/variables';
+
+//semantic overrides and custom framework
+@import '../shared/ui/assets/animations';
+@import '../shared/ui/assets/buttons';
+@import '../shared/ui/assets/forms';
+@import '../shared/ui/assets/icons';
+@import '../shared/ui/assets/menu';
+@import '../shared/ui/assets/dropdown';
+@import '../shared/ui/assets/layout';
+@import '../shared/ui/assets/message';
+@import '../shared/ui/assets/mixins';
+@import '../shared/ui/assets/modals';
+@import '../shared/ui/assets/scrollbar';
+@import '../shared/ui/assets/tables';
+//end frameworks

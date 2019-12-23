@@ -1,0 +1,95 @@
+@import '../../assets/variables';
+
+$editable-label-min-width: rem(40px);
+$editable-label-max-width: rem(400px);
+$editable-label-height: rem(22px);
+
+// MOVE TO HIS OWN FILE
+.char-count {
+  border-radius: rem(7.5px);
+  background-color: #f1f4fa;
+  font-size: rem(11px);
+  height: rem(15px);
+  line-height: rem(15px);
+  padding: rem(0 4px);
+
+  + input:not([type='checkbox']):not([type='radio']) {
+    padding-right: rem(40px);
+  }
+}
+
+.editable-label {
+  position: relative;
+  display: inline-block;
+  font-size: inherit;
+  height: $editable-label-height;
+  line-height: $editable-label-height;
+
+  .char-count {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: rem(3px);
+  }
+
+  &-input {
+    position: absolute;
+    top: rem(2px);
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-fast;
+    font-weight: inherit;
+    min-width: $editable-label-min-width;
+    max-width: $editable-label-max-width;
+  }
+
+  &-text {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: $editable-label-max-width;
+  }
+
+  &-icon {
+    width: $editable-label-height;
+    height: 100%;
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: rem(13px);
+    position: relative;
+    cursor: pointer;
+    .spinner {
+      position: absolute;
+      top: rem(3px);
+      left: rem(3px);
+      width: rem(16px);
+      height: rem(16px);
+      margin: 0;
+    }
+    &:hover {
+      color: $hover;
+    }
+  }
+
+  // EDIT-MODE
+  &.edit-mode .char-count {
+    display: inline-flex;
+  }
+
+  &.edit-mode &-input {
+    pointer-events: initial;
+    position: static;
+    opacity: 1;
+  }
+
+  &.edit-mode &-text {
+    display: none;
+  }
+
+  &.edit-mode &-icon.edit {
+    visibility: hidden;
+  }
+}

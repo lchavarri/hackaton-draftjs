@@ -1,0 +1,190 @@
+label {
+  &.required {
+    &:after {
+      content: '*';
+      color: $red;
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+
+.ui.input > input {
+  border-color: $border-input;
+
+  &::placeholder {
+    color: $border-input;
+  }
+}
+
+.ui.input input,
+.ui.form input {
+  @at-root .ui.form textarea,
+    &:not([type]),
+    &[type='date'],
+    &[type='datetime-local'],
+    &[type='email'],
+    &[type='file'],
+    &[type='number'],
+    &[type='password'],
+    &[type='search'],
+    &[type='tel'],
+    &[type='text'],
+    &[type='time'],
+    &[type='url'] {
+    background-color: white;
+    border-radius: rem(3px);
+    box-shadow: none;
+    color: $black;
+    font-family: inherit;
+    font-size: rem(12px);
+    font-weight: $font-weight-light;
+    height: rem(30px);
+
+    &,
+    &:active,
+    &:focus {
+      border: 1px solid $border-color;
+      border-radius: 3px;
+    }
+
+    &::placeholder,
+    [placeholder] {
+      color: $border-input;
+      opacity: 1;
+    }
+  }
+}
+
+.ui.input {
+  &.icon {
+    svg[class*='fa'] {
+      font-size: rem(20px);
+      margin-left: rem(5px);
+      width: 12px;
+    }
+
+    > i.icon {
+      font-size: rem(10px);
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+  }
+
+  &[class*='left icon'] > input {
+    padding-left: rem(30px) !important;
+  }
+
+  &.clear {
+    > input {
+      padding-right: rem(30px) !important;
+    }
+
+    .button {
+      position: absolute;
+      right: rem(11px);
+      left: auto;
+      top: rem(7px);
+
+      &:hover {
+        background: transparent !important; //override Semantic-UI
+      }
+
+      svg {
+        width: rem(8px);
+      }
+    }
+
+    .ui.dropdown .menu > &.input:not(.transparent) svg.icon,
+    .ui.dropdown .menu > &.input:not(.transparent) button.icon {
+      padding: 0; //override Semantic-UI
+    }
+  }
+
+  &.field.icon.bottom {
+    width: 100%;
+    flex-flow: row wrap;
+
+    .icon {
+      top: auto;
+      bottom: 0;
+      height: rem(30px);
+
+      svg {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.ui.checkbox {
+  .box,
+  label {
+    font-size: 12px;
+  }
+
+  input:checked {
+    ~ .box:after,
+    ~ label:after {
+      color: $hover;
+    }
+  }
+
+  &.svg {
+    input:checked {
+      ~ label,
+      ~ .box {
+        &:after {
+          content: none;
+        }
+
+        svg {
+          position: absolute;
+          left: 3px;
+          top: 2px;
+        }
+      }
+    }
+  }
+}
+
+.ui.form textarea {
+  height: 83px;
+  resize: none;
+}
+
+.field {
+  position: relative;
+
+  .char-count {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+  }
+}
+
+input:not([type='checkbox']):not([type='radio']).material {
+  border: 0 none;
+  border-bottom: rem(1px) solid $hover;
+  border-radius: 0;
+  margin: 0;
+  padding: rem(1px 0px);
+  line-height: rem(17.5px);
+  outline: none;
+  width: 100%;
+  background: transparent;
+
+  &::placeholder {
+    color: $border-input;
+    opacity: 1;
+    font-weight: $font-weight-normal;
+  }
+
+  &::selection {
+    background-color: #cce2ff;
+  }
+
+  &:invalid {
+    border-bottom-color: $red;
+  }
+}

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DismissableMessage component should match component snapshot 1`] = `
+<div
+  className="ui dismissable message negative"
+>
+  <i
+    className="icon close"
+    onClick={[Function]}
+  >
+    <mockConstructor
+      icon={[MockFunction]}
+    />
+  </i>
+  <div
+    className="content"
+    onClick={[Function]}
+  >
+    <div
+      className="header"
+    >
+      This is a header
+    </div>
+    <p
+      className="clamped"
+    />
+  </div>
+</div>
+`;

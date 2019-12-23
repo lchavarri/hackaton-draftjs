@@ -1,0 +1,250 @@
+@import '../../assets/variables';
+@import '../../../shared/ui/assets/mixins';
+
+.highlighted-text {
+  background: $tertiary-background-color;
+}
+
+.ui.card {
+  box-shadow: rem(0 2px 5px 1px) fade-out($color: $shadow, $amount: 0.78);
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: rem(40px);
+  width: 100%;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: rem(2px 2px 7px 0) fade-out($color: $shadow, $amount: 0.78),
+      rem(-2px -2px 7px 0) fade-out($color: $shadow, $amount: 0.78);
+  }
+
+  .ui.right.buttons {
+    display: none;
+
+    > .icon,
+    .icon > svg {
+      height: rem(14px);
+      width: rem(14px);
+    }
+
+    .button + .button {
+      margin-left: rem(5px);
+    }
+  }
+
+  &:hover {
+    .ui.right.buttons {
+      display: flex;
+    }
+  }
+
+  .meta,
+  &s .meta {
+    color: inherit;
+    font-size: rem(10px);
+    line-height: rem(15px);
+    text-transform: uppercase;
+    width: fit-content;
+
+    .highlighted-text {
+      margin: 0;
+
+      & ~ span {
+        margin: 0;
+      }
+    }
+  }
+
+  .content.extra {
+    .meta {
+      line-height: rem(16px);
+      margin-bottom: 0;
+      text-transform: initial;
+
+      &.right {
+        float: right;
+      }
+
+      &:last-child {
+        display: flex;
+      }
+    }
+  }
+
+  .saved-card & .extra {
+    // To override SUI
+    border-top: 0 !important;
+
+    .meta {
+      font-size: rem(12px);
+    }
+  }
+
+  .saved-card & .content.extra {
+    padding: rem(10px 16px 16px);
+  }
+
+  .saved-card & .content > .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .button.icon {
+    margin-right: rem(1px);
+  }
+
+  > .content > .header,
+  &s > .card > .content > .header {
+    color: inherit;
+    user-select: none;
+    width: fit-content;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .cards & > .content > .header:not(.ui) {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: rem(20px);
+    margin-top: 0;
+    max-width: calc(100% - #{rem(25px)});
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cards & > .content {
+    font-size: rem(13px);
+    border-top: 0;
+    padding: rem(10px 15px);
+
+    &.drag-handle {
+      padding: rem(15px);
+    }
+  }
+
+  .filter-card-wrapper & .ui.buttons {
+    margin-top: 0;
+  }
+
+  .boolean-connector {
+    margin-left: rem(5px);
+  }
+
+  &.card-group {
+    transition: background-color $transition-fast;
+
+    > .content.extra {
+      background-color: transparent;
+    }
+
+    &.depth-0 {
+      background-color: $background-color;
+
+      > .content.extra {
+        padding: rem(10px 0 50px 17px);
+      }
+    }
+
+    &.depth-1 {
+      background-color: $secondary-background-color;
+
+      > .content.extra {
+        padding: rem(10px 0 40px 17px);
+      }
+    }
+
+    &.depth-2 {
+      background-color: $tertiary-background-color;
+
+      > .content.extra {
+        padding: rem(10px 0 30px 17px);
+      }
+    }
+
+    .meta.class-name {
+      text-transform: uppercase;
+    }
+
+    > .content {
+      background-color: white;
+
+      border-radius: rem(4px 4px 0 0); // hide background for rounded borders
+    }
+
+    &.collapsed {
+      background-color: white;
+
+      & .description {
+        height: 0 !important;
+      }
+    }
+
+    .drop-disabled:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  .ui.card {
+    width: auto;
+  }
+}
+
+.order {
+  font-size: rem(10px);
+  left: rem(-15px);
+  position: absolute;
+  top: rem(9px);
+
+  .ui.card .ui.card & {
+    display: none;
+  }
+}
+
+.cards-library {
+  @at-root .saved-card,
+    .library-card {
+    margin-bottom: rem(10px) !important; // force library margin
+  }
+  .clear-fix {
+    @include clearfix(both);
+    display: block;
+  }
+}
+
+.group-container {
+  width: 100%;
+
+  + .group-container {
+    margin-top: rem(20px);
+  }
+}
+
+.draggable-clone {
+  z-index: 5000;
+  margin: rem(0 0 10px 0) !important;
+}
+
+.initial {
+  background-color: $background-dark;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(16px);
+  height: rem(16px);
+  border-radius: 50%;
+  font-size: rem(8px);
+  line-height: rem(16px);
+  text-transform: uppercase;
+
+  + span {
+    max-width: 81px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

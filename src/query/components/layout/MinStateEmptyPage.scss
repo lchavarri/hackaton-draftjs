@@ -1,0 +1,23 @@
+@import '../../assets/variables';
+
+.min-empty {
+  color: $black;
+  width: 100%;
+  text-align: center;
+  padding: rem(76px 0);
+  &-title {
+    font-size: rem(20px);
+  }
+  &-subtitle {
+    margin: 0 auto rem(22px);
+    max-width: rem(280px);
+  }
+  &-input-wrapper {
+    margin-bottom: rem(21px);
+    font-size: rem(16px);
+    min-height: rem(26px);
+  }
+  .ui.button {
+    margin: 0;
+  }
+}

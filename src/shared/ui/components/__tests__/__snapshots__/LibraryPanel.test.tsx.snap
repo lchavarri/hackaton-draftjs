@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LibraryPanel component should match component snapshot 1`] = `
+<Fragment>
+  <button
+    className="eidos-library-toggle ui button text"
+    onClick={[Function]}
+  >
+    <mockConstructor
+      aria-hidden="true"
+      className="icon"
+      icon={[MockFunction]}
+    />
+     
+    Close Library Panel
+  </button>
+  <aside
+    className="eidos-library "
+  />
+</Fragment>
+`;

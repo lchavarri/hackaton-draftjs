@@ -1,0 +1,25 @@
+@import '../../assets/variables';
+
+.min-state-query-name {
+  background-color: $background-color;
+  padding: rem(16px);
+  white-space: nowrap;
+  overflow: auto;
+  border-bottom: rem(1px) solid $border-color;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  :last-child .connector {
+    display: none;
+  }
+
+  .display-name {
+    font-weight: bold;
+  }
+
+  .connector {
+    margin: rem(0 8px);
+    color: #555555;
+  }
+}

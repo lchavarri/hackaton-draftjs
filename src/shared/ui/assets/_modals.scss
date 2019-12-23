@@ -1,0 +1,87 @@
+@import '../assets/mixins';
+
+$modal-padding: 35px;
+
+.dimmed.dimmable:not(body) {
+  .ui.page.dimmer {
+    position: absolute;
+  }
+}
+
+.ui.dimmer {
+  background-color: rgba(249, 249, 249, 0.75); //#F9F9F9
+}
+
+.ui.modal {
+  box-shadow: 0 2px 5px 0 rgba(144, 164, 183, 0.22); //#90a4b7
+
+  > .header {
+    border-bottom: 0 none;
+    font-size: rem(20px);
+
+    &,
+    .sub.header {
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .sub.header {
+      margin-top: 5px;
+    }
+  }
+
+  > .icon:first-child + *,
+  > :first-child:not(.icon) {
+    padding-top: rem($modal-padding + 3px);
+    padding-left: rem($modal-padding);
+    padding-right: rem($modal-padding);
+  }
+
+  > .close {
+    color: inherit;
+    font-size: rem(20px);
+    line-height: 2.25rem;
+    margin: 0;
+    opacity: 1;
+    padding: 0;
+    right: rem($modal-padding - 8px);
+    top: rem($modal-padding - 1px);
+
+    &:hover {
+      color: $hover;
+    }
+  }
+
+  &,
+  > .content {
+    font-size: inherit;
+  }
+
+  > .content {
+    padding-left: rem($modal-padding);
+    padding-right: rem($modal-padding);
+  }
+
+  > .actions {
+    @include clearfix(both);
+    background: transparent;
+    border-top: 0 none;
+    padding-bottom: rem($modal-padding);
+    padding-left: rem($modal-padding);
+    padding-right: rem($modal-padding);
+    padding-top: rem(9px);
+
+    > .button:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.ui.popup {
+  &.danger {
+    color: $red;
+  }
+  &.hidden {
+    visibility: hidden !important;
+  }
+}

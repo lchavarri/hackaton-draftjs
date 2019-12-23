@@ -1,0 +1,51 @@
+@import '../../assets/variables';
+
+.main {
+  .app-bar {
+    padding: rem(16px);
+    min-height: $app-bar-height;
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+
+    .input-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: rem(16px);
+
+      .header {
+        font-weight: $font-weight-bold;
+        margin: 0;
+        font-size: inherit;
+      }
+
+      .editable-label {
+        color: $menu;
+        margin: 0 rem(5px);
+      }
+
+      &-icon {
+        flex: 0 0 rem(22px);
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: rem(13px);
+
+        &:hover {
+          color: $hover;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .button.text {
+      color: $hover;
+      align-self: center;
+      padding: 0;
+    }
+  }
+}

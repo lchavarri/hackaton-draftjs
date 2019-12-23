@@ -1,0 +1,25 @@
+.small-scroll {
+  overflow-y: hidden;
+
+  &:hover {
+    overflow-y: overlay;
+  }
+}
+
+.custom-scroll {
+  &::-webkit-scrollbar {
+    height: rem(5px);
+    width: rem(5px);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+body {
+  &,
+  * {
+    @extend .custom-scroll;
+  }
+}

@@ -1,0 +1,115 @@
+.menu-item {
+  color: $menu;
+  font-size: rem(10px);
+  font-weight: 600;
+  letter-spacing: rem(0.1px);
+  line-height: rem(17.33px);
+  text-transform: uppercase;
+  padding: rem(5px 0);
+  white-space: nowrap;
+}
+
+.separator.item {
+  height: rem(10px);
+
+  .ui.menu & {
+    border-left: rem(1px) solid #c3c3c3;
+  }
+}
+
+.ui.text.menu {
+  margin: rem(1em 7px 1em 16px);
+  min-height: rem($bar-size-sm);
+
+  > * + *,
+  * + .item {
+    margin-left: rem(24px);
+  }
+
+  .dropdown.inline > .text {
+    font-size: 11px;
+    font-weight: $font-weight-light;
+    text-transform: initial;
+  }
+
+  .item:not(.dropdown) {
+    @extend .menu-item;
+
+    &.menu-wrapper {
+      padding: 0;
+    }
+
+    &.active {
+      font-weight: $font-weight-semi;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      color: $disabled !important;
+    }
+
+    > .input input {
+      font-size: rem(12px);
+    }
+  }
+
+  .dropdown.item .menu {
+    // Adapt to its content instead of the father
+    min-width: max-content;
+  }
+
+  .item + .dropdown {
+    margin-left: rem(24px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  * + .button {
+    margin-left: rem(27px);
+  }
+
+  > .menu-wrapper + .dropdown {
+    margin-left: rem(10px);
+    min-width: rem(60px);
+  }
+
+  .btn-link {
+    color: $hover;
+    text-decoration: none;
+    margin-left: rem(4px);
+    text-transform: unset;
+    min-width: unset;
+    min-height: unset;
+    padding: 0;
+  }
+
+  label {
+    color: $border-input;
+    font-size: rem(10px);
+  }
+
+  .vertical-item.item {
+    transition: none;
+    transform: rotate(-270deg);
+    margin-left: rem(-27px);
+    margin-top: rem(60px);
+  }
+}
+
+.ui.menu a.item,
+.ui.text.menu .item:not(.dropdown):not(.label),
+.ui.menu .menu.visible:not(.transition) .text {
+  &.active:not(.dropdown),
+  &:hover {
+    color: $hover;
+
+    .dropdown,
+    .dropdown .text {
+      color: $menu;
+    }
+  }
+}
+
+.menu.transition.visible {
+  padding: rem(7px 0);
+}

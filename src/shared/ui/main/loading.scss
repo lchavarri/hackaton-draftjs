@@ -1,0 +1,20 @@
+@import '../../../assets/variables';
+
+$loading-icon-size: rem(18px);
+
+.loading-app {
+  display: flex;
+  align-items: center;
+  height: rem(20px);
+  padding: rem(16px 8px);
+  &-icon {
+    width: $loading-icon-size;
+    height: $loading-icon-size;
+    display: inline-flex;
+    opacity: 0.7;
+  }
+  &-text {
+    color: $menu;
+    margin-left: rem(8px);
+  }
+}

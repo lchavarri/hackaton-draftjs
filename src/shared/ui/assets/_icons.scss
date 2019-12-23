@@ -1,0 +1,45 @@
+i.fa,
+i.far,
+i.fas {
+  font-family: 'Font Awesome 5 Free';
+}
+
+i.fa,
+i.fas {
+  font-weight: 900;
+}
+
+i.far {
+  font-weight: 400;
+}
+// FontAwesome fix for decimals: issue on svg width
+.svg-inline--fa.fa-w-10 {
+  width: 6px;
+}
+
+.icon {
+  &.orange {
+    // To override SUI
+    color: $orange !important;
+
+    path {
+      fill: $orange;
+    }
+  }
+  &.green {
+    //To override SUI
+    color: $green !important;
+
+    path {
+      fill: $green;
+    }
+  }
+  &.red {
+    // To override SUI
+    color: $red !important;
+
+    path {
+      fill: $red;
+    }
+  }
+}

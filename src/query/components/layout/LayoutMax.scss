@@ -1,0 +1,504 @@
+@import '../../assets/variables';
+@import '../../../shared/ui/assets/mixins';
+@import '../../../shared/ui/assets/scrollbar';
+@import '../../../shared/ui/components/SplitPane/SplitPane';
+
+* {
+  // Disable text selection for all items (enable only needed)
+  user-select: none;
+}
+
+.dragged-shadow {
+  font-size: rem(10px);
+  opacity: 1 !important;
+
+  .meta {
+    font-size: rem(10px);
+  }
+}
+
+.filter-path-cards.ui {
+  margin: 0;
+  min-height: 100%;
+}
+
+.menu-wrapper {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+
+  &.filter-menu-wrapper {
+    padding: rem(0 0 0 24px);
+
+    &.hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.main-class {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.main.app-main {
+  flex-flow: column wrap;
+}
+
+.main {
+  @extend .main-class;
+
+  &.max {
+    flex: 1 1;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    .nonclickable {
+      height: rem($app-bar-height);
+      width: 100%;
+      background: white;
+      pointer-events: none;
+    }
+
+    .app-bar {
+      max-height: rem($app-bar-height);
+    }
+  }
+
+  .app-wrapper {
+    display: flex;
+    flex: 1 1;
+    // Flex hack to take the parent's height
+    overflow: hidden;
+    max-width: 100%;
+
+    .ui.basic.button.icon {
+      margin: 0;
+      padding: 0;
+      min-width: rem(55px);
+
+      &.background {
+        border: 0;
+        border-radius: rem(4px);
+        box-shadow: none;
+        height: rem($bar-size-sm);
+        min-width: rem($bar-size-sm);
+        margin-right: rem(16px);
+        margin-left: rem(-8px);
+        background: $icon-background-color !important;
+
+        &:hover {
+          color: $hover !important;
+          background: $button-hover !important;
+        }
+
+        svg {
+          height: rem(14px);
+          width: rem(14px);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        border: 0;
+        background: transparent !important;
+        box-shadow: none;
+      }
+
+      &.xs {
+        min-width: 0;
+      }
+    }
+  }
+
+  .drawer {
+    border-right: 1px solid $border-color;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    transition: width $transition-slow;
+
+    .ui.cards {
+      margin: 0;
+    }
+
+    .menu.pointing {
+      height: rem($bar-size-lg);
+      margin: 0;
+      background-color: $background-color;
+      z-index: 2;
+
+      svg {
+        width: rem(14px);
+        height: rem(14px);
+
+        &:hover {
+          color: $hover;
+        }
+      }
+
+      .item {
+        height: rem($bar-size-lg);
+
+        &.active {
+          color: $hover;
+          border-color: $hover;
+
+          &:hover {
+            border-color: $hover;
+            color: $hover;
+          }
+        }
+      }
+
+      a.item:hover {
+        color: $hover;
+      }
+    }
+
+    .menu-wrapper {
+      position: sticky;
+      z-index: 2;
+      top: 0;
+      background: #f9f9f9;
+      padding: rem(16px 16px 18px);
+
+      > .menu {
+        margin-bottom: 0;
+      }
+
+      &.saved-patterns-menu {
+        padding-bottom: rem(5px);
+
+        > .menu {
+          display: flex;
+          align-items: flex-end;
+          width: 100%;
+
+          .item {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .tab {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      flex: 1 1;
+      overflow: hidden;
+      flex-direction: column;
+
+      &.active {
+        display: flex;
+      }
+    }
+  }
+
+  .panels {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .drawer.visible + .panels {
+    max-width: calc(100% - #{rem(320px)});
+  }
+
+  $footer-height: $bar-size-lg;
+
+  .footer {
+    width: 100%;
+    height: rem($footer-height);
+    display: flex;
+    align-items: center;
+    padding: rem(14px);
+    border-top: 1px solid $border-color;
+    background-color: $background-color;
+
+    .ui[class*='right floated'] {
+      margin-left: auto;
+    }
+  }
+
+  .split-pane {
+    width: calc(100% - #{rem($bar-size-sm)});
+    // Override inline JS styles
+    height: calc(100% - #{rem($footer-height)}) !important;
+    max-height: calc(100% - #{rem($footer-height)}) !important;
+    min-height: calc(100% - #{rem($footer-height)}) !important;
+
+    .path,
+    .result-stage {
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      position: relative;
+      background-color: $background-color;
+    }
+
+    .path {
+      .menu-wrapper {
+        .drawer-top {
+          height: rem($bar-size-lg);
+        }
+      }
+    }
+  }
+}
+
+.ui[class*='top attached'].menu {
+  border-radius: 0;
+}
+
+.filter-menu-wrapper {
+  margin-top: 0;
+  position: sticky;
+  z-index: 1;
+}
+
+.filter-path,
+.result-stage-wrapper,
+.filter-library {
+  padding: 0;
+  display: flex;
+  width: 100%;
+}
+
+.filter-library,
+.filter-path {
+  margin-right: rem(4px);
+  user-select: none;
+  // Push down to show the menu shadow over
+  position: relative;
+  // Fixes issues with shadow overlap between containers and cards being dragged
+  z-index: auto;
+
+  .dragged-shadow {
+    opacity: 1 !important;
+
+    .boolean-connector {
+      display: none;
+    }
+  }
+
+  .sortable-ghost {
+    opacity: 0 !important;
+  }
+}
+
+.group-container {
+  .meta {
+    display: block;
+    margin-bottom: rem(10px);
+  }
+}
+
+.filter-library {
+  overflow: auto;
+  flex: 1 1;
+
+  .saved-patterns-menu + & {
+    flex: 1 1;
+  }
+
+  &.filter-path {
+    height: calc(100% - #{rem($bar-size-lg)});
+  }
+
+  .group-container:last-child {
+    margin-bottom: rem(70px);
+  }
+}
+
+.result-stage-wrapper {
+  height: calc(100% - #{rem($bar-size-lg)});
+}
+
+.filter-card {
+  position: relative;
+
+  .badge {
+    background-color: $hover;
+    color: white;
+    left: 99%;
+    position: absolute;
+    display: inline-flex;
+    top: rem(-10px);
+    z-index: 1;
+    border-radius: rem(20px);
+  }
+}
+
+.filter-path {
+  .sortable-ghost {
+    padding-top: rem(20px);
+    padding-bottom: rem(20px);
+  }
+
+  .draggable-card-list {
+    width: 100%;
+    min-height: rem(60px);
+    position: relative;
+    z-index: 1;
+  }
+
+  .filter-path-draggable-card-list {
+    width: 100%;
+    max-width: rem(545px);
+    min-height: 100%;
+    position: relative;
+    padding: rem(0 10px 80px);
+  }
+}
+
+.drawer-top.ui.top {
+  ~ .drawer-top.ui.top {
+    border-top: 0 none;
+    box-shadow: rem(0 1px 1px 0) rgba(0, 0, 0, 0.1);
+    height: rem($bar-size-sm);
+    margin-top: 0;
+    top: rem($bar-size-lg);
+
+    &.expandable {
+      height: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(-10px);
+    }
+  }
+}
+
+.ui.menu.top.drawer-top {
+  align-items: center;
+  height: rem($bar-size-lg);
+  border-right: 0;
+  border-left: 0;
+  margin: 0;
+  padding: 0;
+
+  .search {
+    width: rem(213px);
+  }
+}
+
+.drawer-top > .container {
+  .header {
+    color: $black;
+    font-family: inherit;
+    font-size: rem(14px);
+    font-weight: $font-weight-bold;
+    margin: rem(2px 0 0);
+    text-transform: uppercase;
+
+    &:not(:first-child) {
+      margin-left: rem(12px);
+    }
+  }
+}
+
+.cards-library {
+  h4 {
+    font-size: rem(14px);
+    font-weight: $font-weight-light;
+    margin-top: rem(18px);
+    text-align: center;
+  }
+}
+
+.ui.dropdown.drawer-top.top .text,
+.ui.menu.drawer-top.top {
+  color: $primary;
+  font-size: rem(13px);
+}
+
+.container-scrollable {
+  @extend .small-scroll;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  padding: rem(7px 16px 0);
+}
+
+.filter-pattern {
+  position: absolute;
+  margin-right: 20px;
+}
+
+.stage-empty {
+  &.filter-pattern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.saved-empty {
+  align-self: flex-end;
+  text-align: center;
+  padding: 0 80px;
+
+  h4 {
+    font-size: 14px;
+    font-weight: $font-weight-light;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: $font-weight-light;
+  }
+}
+
+.ui.form {
+  .field.invalid {
+    .input input {
+      border: 1px solid $red;
+    }
+  }
+}
+
+.flap {
+  &.ui.text.menu {
+    margin-left: 0;
+    padding: 0;
+    padding-left: rem(16px);
+
+    .item + .item {
+      margin-left: 4px;
+    }
+
+    .item:not(.dropdown) {
+      border: rem(1px) solid transparent;
+      // To override SUI
+      border-radius: 0 !important;
+      padding: rem(3px 7px);
+      transition: background-color $transition-fast;
+
+      &.active,
+      &:hover {
+        border: rem(1px) solid transparent;
+        background-color: $tertiary-background-color;
+        color: inherit;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+svg {
+  &.primary * {
+    fill: $hover;
+  }
+}

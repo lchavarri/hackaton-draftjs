@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Updated component should match component snapshot 1`] = `
+<div
+  className="updated-at"
+>
+  <div>
+    Updated: 
+    2019/11/25 16:18:35
+  </div>
+  <div>
+    Duration: 
+    0
+    s
+  </div>
+</div>
+`;

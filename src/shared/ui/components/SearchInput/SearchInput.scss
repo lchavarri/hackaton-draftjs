@@ -1,0 +1,46 @@
+@import '../../assets/variables';
+
+$search-clear-size: rem(30px);
+
+.search {
+  // SemanticUI override
+  &.ui.input {
+    > input[type='text'] {
+      border-color: $border-color;
+      border-radius: rem(15px);
+      padding-right: $search-clear-size;
+
+      &:focus,
+      &:active {
+        border-color: $hover;
+        border-radius: rem(15px);
+      }
+    }
+
+    > button.button {
+      position: absolute;
+      top: 0;
+      right: rem(4px);
+      width: $search-clear-size;
+      height: $search-clear-size;
+      padding: 0;
+      margin: 0;
+      background: transparent !important;
+
+      &:hover {
+        background: transparent !important;
+      }
+
+      > svg {
+        width: rem(14px);
+        height: rem(14px);
+      }
+    }
+
+    .icon {
+      & > svg {
+        color: $menu;
+      }
+    }
+  }
+}

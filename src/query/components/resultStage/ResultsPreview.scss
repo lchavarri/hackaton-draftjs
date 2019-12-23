@@ -1,0 +1,26 @@
+@import '../../assets/variables';
+
+$results-preview-spacing: rem(22px);
+
+.results-preview {
+  &-labels {
+    line-height: rem(30px);
+    > span {
+      margin-bottom: 0;
+    }
+  }
+  &-record-count {
+    display: inline-block;
+    margin-left: $results-preview-spacing;
+  }
+  .ui.button.text {
+    padding: 0;
+    margin: 0;
+    > .icon {
+      font-size: rem(14px);
+    }
+  }
+  .ui.button.text + .ui.button.text {
+    margin-left: $results-preview-spacing;
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../assets/variables';
+
+$variable-name-letter-spacing: rem(-0.32px);
+$variable-name-width: rem(246px);
+$variable-name-height: rem(22px);
+
+.variable-name {
+  height: $variable-name-height;
+  .editable-label {
+    .editable-label-input {
+      min-width: $variable-name-width;
+      max-width: $variable-name-width;
+      letter-spacing: $variable-name-letter-spacing;
+    }
+    .editable-label-text {
+      letter-spacing: $variable-name-letter-spacing;
+      max-width: $variable-name-width;
+    }
+  }
+}

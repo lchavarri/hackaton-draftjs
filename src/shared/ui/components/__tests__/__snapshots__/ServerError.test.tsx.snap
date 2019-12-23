@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ServerError component should match component snapshot 1`] = `
+<DismissableMessage
+  variant="negative"
+>
+  Unable to get kernel
+</DismissableMessage>
+`;

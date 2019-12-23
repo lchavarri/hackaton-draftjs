@@ -1,0 +1,119 @@
+@import '../../assets/variables';
+@import '../../../shared/ui/assets/mixins';
+
+.tags-list {
+  display: flex;
+  width: 100%;
+  flex-flow: wrap;
+}
+
+//display cypher
+.cypher {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.result-stage {
+  height: 100%;
+}
+
+.container.padded {
+  padding: rem(17px 20px 17px 25px);
+
+  label {
+    display: inline-block;
+    flex-shrink: 0;
+    font-weight: $font-weight-bold;
+    line-height: rem(24px); //align with column builder menu and tags
+    margin-right: rem(10px);
+
+    + span {
+      display: inline-block;
+      margin-bottom: rem(10px);
+    }
+  }
+
+  .table-responsive-x {
+    margin-bottom: rem(14px);
+  }
+}
+
+.results-main {
+  // Min Resolution: 1366px
+  min-width: rem(425px);
+
+  .ui.grid > .row > &.column {
+    padding: 0;
+  }
+}
+
+.flex-row {
+  .ui.grid > .row > & {
+    display: flex;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.loading-wrapper {
+  font-size: rem(14px);
+  font-weight: $font-weight-light;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 110px;
+}
+
+.loading {
+  font-size: rem(100px);
+  color: $hover;
+  margin-bottom: rem(24px);
+
+  circle {
+    fill: transparent;
+    stroke: $hover;
+    stroke-width: 2;
+    stroke-dasharray: 250;
+    stroke-dashoffset: 1000;
+    animation: rotate 5s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.trimmed-table {
+  $column-width: 210px;
+
+  tr td,
+  tr th {
+    min-width: rem($column-width);
+  }
+
+  td div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: rem($column-width);
+    overflow: hidden;
+  }
+}
+
+.child-list {
+  margin: 10px;
+  .header-handle + div {
+    padding-left: 10px;
+    border: 1px solid red;
+  }
+}
+
+#columnBuilderDropdown {
+  .ui.message {
+    border: 0;
+  }
+}

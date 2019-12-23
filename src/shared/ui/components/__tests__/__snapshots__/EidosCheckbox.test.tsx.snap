@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EidosCheckbox component should match component snapshot 1`] = `
+<div
+  className="ui checkbox svg"
+>
+  <input
+    className="hidden"
+    tabIndex={0}
+    type="checkbox"
+  />
+  <label />
+</div>
+`;

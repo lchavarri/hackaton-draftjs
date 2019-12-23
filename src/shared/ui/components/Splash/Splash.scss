@@ -1,0 +1,17 @@
+@import '../../assets/variables';
+
+.splash {
+  color: $black;
+  width: 100%;
+  text-align: center;
+  padding: rem(76px 0);
+
+  &-title {
+    font-size: rem(20px);
+  }
+
+  &-subtitle {
+    margin: 0 auto rem(22px);
+    max-width: rem(280px);
+  }
+}

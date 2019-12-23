@@ -1,0 +1,60 @@
+.animate {
+  transition: opacity $transition-fast 0.1s, height $transition-fast,
+    padding $transition-fast !important; //override SUI
+
+  &.button {
+    transition: opacity $transition-fast, height $transition-slow,
+      padding $transition-slow,
+      //add regular ones for buttons
+        opacity $transition-fast,
+      background-color $transition-fast, color $transition-fast,
+      box-shadow $transition-fast !important; //override SUI
+  }
+
+  &.animate-hide {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 0 !important; //override SUI
+    padding-top: 0 !important; //override SUI
+
+    &.padded {
+      padding-bottom: rem(17px) !important; //override SUI
+    }
+
+    &.button {
+      visibility: visible;
+    }
+
+    &.vertical-item {
+      //animate classes added to fix chrome blurry font on rotate
+      opacity: 1;
+      visibility: visible;
+      overflow: visible;
+    }
+  }
+}
+
+.reactAnimate {
+  &-enter,
+  &-appear {
+    opacity: 0.01;
+
+    &-done {
+      opacity: 1;
+      transition: height $transition-fast, opacity $transition-fast 0.1s;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    height: 109px;
+
+    &-done {
+      opacity: 0.01;
+      height: 0;
+      transition: height $transition-fast, opacity $transition-fast;
+    }
+  }
+}

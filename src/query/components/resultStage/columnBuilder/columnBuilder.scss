@@ -1,0 +1,49 @@
+@import '../../../assets/variables';
+
+$tag-height: 24px;
+$tag-gap-bottom: 8px;
+$tag-gap: 5px;
+
+.column-builder {
+  display: inline-flex;
+  min-height: rem($tag-height + $tag-gap-bottom);
+
+  .ui.multiple.dropdown {
+    min-width: rem(60px);
+    margin-left: rem(9px);
+    max-height: rem($tag-height);
+    padding: rem(3px 0);
+
+    > .menu {
+      margin-top: rem(5px);
+    }
+
+    &.upward > .menu {
+      top: 100%;
+      bottom: auto;
+    }
+  }
+
+  .ui.multiple.dropdown > .text {
+    line-height: rem(18.1px);
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 0;
+    user-select: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $hover;
+    }
+  }
+
+  .item:not(.btn-link):hover {
+    background-color: $background-color !important;
+  }
+}
+
+.ui.dropdown .menu > .header {
+  font-size: rem(13px);
+  text-transform: none;
+}

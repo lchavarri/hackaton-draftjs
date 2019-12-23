@@ -1,0 +1,52 @@
+@import '~sass-rem/rem';
+@import '../../assets/variables';
+
+.file-picker {
+  .dropzone {
+    border: rem(1px) dashed $border-color;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: rem(25px 0 20px);
+    outline: none;
+    min-height: rem(138px);
+    height: rem(138px);
+    transition: background-color $transition-slow, border-color $transition-slow; //will be animated with drag-... classes
+
+    .header {
+      font-size: rem(16px);
+      margin: rem(0 0 4px);
+    }
+
+    //new custom message
+    .message.transparent {
+      padding-bottom: rem(5px);
+      margin-top: rem(12px);
+    }
+
+    //states based on dragged file type
+    &.drag-accept {
+      background-color: rgba(123, 183, 254, 0.1);
+      border-color: $hover;
+    }
+
+    &.drag-reject {
+      background-color: fade-out($red, 0.9);
+      border-color: fade-out($red, 0.2);
+    }
+
+    &.drag-active {
+      background-color: rgba(123, 183, 254, 0.1);
+      border-color: $hover;
+    }
+  }
+
+  .header + p {
+    margin-bottom: 0;
+  }
+
+  .loading {
+    color: $hover;
+    font-size: rem(14px);
+  }
+}

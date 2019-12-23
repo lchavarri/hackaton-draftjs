@@ -1,0 +1,64 @@
+//Import webfonts in this way so Quip recognizes them
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap');
+
+//config for sass-rem
+@import '~sass-rem/rem';
+$rem-baseline: 14px; //default size for semantics-ui
+$rem-px-only: false; //set to true to turn all units to px
+
+// Global variables
+
+// Menus & Layout
+$bar-size-lg: 48px;
+$bar-size-sm: 32px;
+$app-bar-height: 44px;
+$eidos-appbar-height: rem(54px);
+$max-sidebar-width: 320px;
+$eidos-actions-height: rem(52px);
+$default-margin: rem(24px);
+$eidos-actions-z-index: 10;
+
+$eidos-library-width: rem(320px);
+$eidos-library-width-collapsed: rem(63px);
+$eidos-library-bg: #f9f9f9;
+$eidos-library-section-result-bg: #f2f2f2;
+$eidos-library-borded-color: #cccccc;
+$eidos-library-horizontal-padding: rem(16px);
+$eidos-library-padding: $eidos-actions-height $eidos-library-horizontal-padding
+  rem(6px);
+$eidos-library-button-size: rem(32px);
+$eidos-base-padding: rem(6px 16px 6px) $default-margin;
+
+// Colors
+$background-color: #f9f9f9;
+$icon-background-color: #e2e2e2;
+$secondary-background-color: #f3f3f3;
+$tertiary-background-color: #ededed;
+$background-dark: #d1d3db;
+$border-color: #e1e1e1;
+$border-input: #9397a4;
+$disabled: #c3c3c3;
+$primary: #454b60;
+$black: #252525;
+$menu: #606061;
+$text: #1e2020;
+$hover: #036fdc;
+$darker-blue: darken($primary, 5); // around #3a3f51
+$shadow: #90a4b7;
+$orange: #f5a623;
+$green: #60b371;
+$success-green: #2cd41d;
+$red: #d02302;
+$error-red: #fbedeb;
+$button-hover: #e5f0fb;
+
+$font-default: 'Open Sans', sans-serif;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semi: 600;
+$font-weight-bold: 700;
+
+$transition-timing-function: ease;
+$transition-fast: 0.1s $transition-timing-function;
+$transition-normal: 0.2s $transition-timing-function;
+$transition-slow: 0.4s $transition-timing-function;

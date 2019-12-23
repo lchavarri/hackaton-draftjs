@@ -1,0 +1,59 @@
+@import '../assets/variables';
+
+.eidos-appbar {
+  background-color: $background-color;
+  display: flex;
+  align-items: center;
+  padding: rem(9px 16px);
+  height: $eidos-appbar-height;
+  z-index: $eidos-actions-z-index;
+  border-bottom: 0;
+  justify-content: space-between;
+
+  .min-state & {
+    height: $app-bar-height;
+  }
+
+  &-name {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: rem(16px);
+
+    .header {
+      font-weight: $font-weight-bold;
+      margin: 0;
+      font-size: inherit;
+    }
+
+    .editable-label {
+      color: $menu;
+      margin: 0 rem(5px);
+    }
+
+    &-icon {
+      flex: 0 0 rem(22px);
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(13px);
+
+      &:hover {
+        color: $hover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .button.text {
+    color: $hover;
+    min-width: 0;
+    padding: 0;
+  }
+
+  .ui.toast.message {
+    top: rem(22px);
+  }
+}

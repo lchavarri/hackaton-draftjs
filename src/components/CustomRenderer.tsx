@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
 import { RendererProps } from "../utils/DraftUtils";
+import Eidos from "../eidos/index";
+import Query from "../query/index";
 
 const StrategyRenderer = (props: RendererProps) => {
   const { contentState, block } = props;
@@ -21,6 +23,10 @@ const StrategyRenderer = (props: RendererProps) => {
         );
       case "image":
         return <img width="300" height="300" src={data.src} />;
+      case "eidos":
+        return <Eidos></Eidos>;
+      case "query":
+        return <Query></Query>;
     }
   }, [type, data]);
 

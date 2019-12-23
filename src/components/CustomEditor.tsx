@@ -74,6 +74,16 @@ const CustomEditor = (props: any) => {
           Add image
         </button>
       </div>
+      <div>
+        <button onClick={() => handleAddMedia("eidos", imageUrl)}>
+          Add Session
+        </button>
+      </div>
+      <div>
+        <button onClick={() => handleAddMedia("query", imageUrl)}>
+          Add Query
+        </button>
+      </div>
       <DraftControls
         editorState={editorState}
         toggleBlockType={toggleBlockType}

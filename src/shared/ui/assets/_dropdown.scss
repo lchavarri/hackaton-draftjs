@@ -1,0 +1,176 @@
+.ui.dropdown {
+  $padding-left-big: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  padding: rem(5px 0);
+  user-select: none;
+
+  &:hover,
+  .dropdown-menu &:hover {
+    > .text {
+      color: $hover;
+    }
+  }
+
+  &:not(.inline):not(.multiple):hover,
+  &:not(.inline):not(.multiple).active {
+    svg[class*='fa'] path {
+      fill: $hover;
+    }
+  }
+
+  .ui.menu.text & {
+    padding: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    > .text {
+      @extend .menu-item;
+    }
+
+    &:not(.inline):hover,
+    &:not(.inline).active {
+      > .text {
+        color: $hover;
+      }
+    }
+  }
+
+  svg[class*='fa'] {
+    margin-left: rem(4px);
+    vertical-align: middle;
+    width: rem(8px);
+  }
+
+  &.icon {
+    svg[class*='fa'] {
+      height: rem(14px);
+      width: rem(14px);
+    }
+  }
+
+  &.search > .text {
+    line-height: rem(17px);
+  }
+
+  .search input {
+    border-color: $border-color;
+  }
+
+  &.dropdown:not(.floating) .menu .header {
+    color: inherit;
+    font-weight: $font-weight-semi;
+    margin: rem(17px 0 5px);
+    padding: rem(0 $padding-left-big);
+  }
+
+  // Double .dropdown to override SUI
+  &.dropdown .menu {
+    .item {
+      border-top: 0 none;
+      font-size: rem(13px);
+      //to override SUI
+      padding: rem(5px 16px) !important;
+    }
+
+    .message {
+      background-color: transparent;
+      border: 0 none;
+      box-shadow: none;
+      color: $border-input;
+      margin-top: 0;
+      padding: rem(5px $padding-left-big);
+    }
+
+    section:first-child .header {
+      margin-top: rem(6px);
+    }
+
+    > .input {
+      margin-bottom: rem(8px);
+      margin-top: rem(7px);
+    }
+  }
+
+  &.dropdown:not(.selection) .menu .item {
+    padding: rem(5px $padding-left-big) !important;
+  }
+
+  .menu > .item:hover {
+    background-color: $background-color !important;
+  }
+
+  .ui.menu & .menu > .item {
+    // !important to override SUI
+    color: inherit !important;
+    font-size: rem(12px) !important;
+    padding: rem(5px 13px) !important;
+
+    &.active,
+    &:hover {
+      background-color: $background-color !important;
+    }
+
+    &.active:not(.dropdown) {
+      // To override SUI
+      color: inherit !important;
+      font-weight: $font-weight-normal !important;
+    }
+
+    &.divider {
+      background: transparent !important;
+      border-top: rem(1px solid $disabled);
+      margin-top: rem(5px);
+      padding-top: 0 !important;
+    }
+  }
+
+  > .dropdown.icon {
+    margin-left: rem(5px);
+  }
+
+  .menu.right,
+  &.right .menu {
+    left: auto;
+    right: 0;
+  }
+
+  &.selection {
+    border-color: $border-color;
+    color: inherit;
+    min-height: rem(30px);
+    padding: rem(6px 27px 5px 13px);
+
+    &.active,
+    &.active:hover,
+    &:hover {
+      border-color: $hover;
+      box-shadow: none;
+    }
+
+    > .delete.icon,
+    > .dropdown.icon,
+    > .search.icon {
+      padding: rem(9px 10px);
+      opacity: 1;
+    }
+
+    &.search > input.search {
+      height: rem(30px);
+    }
+  }
+
+  .scrolling.menu {
+    border: 0 none;
+    padding: 0;
+  }
+
+  .menu .selected.item,
+  &.selected {
+    background: $background-color;
+    color: $primary;
+  }
+}

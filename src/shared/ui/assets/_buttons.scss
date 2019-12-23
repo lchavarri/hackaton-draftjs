@@ -1,0 +1,168 @@
+$border-radius: 20px;
+
+.single-button {
+  border-radius: rem($border-radius);
+  font-weight: $font-weight-semi;
+  text-transform: uppercase;
+}
+
+.button {
+  &.ui {
+    @extend .single-button;
+    font-family: inherit;
+    font-size: rem(10px);
+    min-height: rem(30px);
+    padding: rem(0 24px);
+    transition: background-color $transition-normal,
+      border-color $transition-normal, color $transition-normal;
+
+    // Quip fix for dropdowns inside buttons
+    overflow: visible;
+    background: $icon-background-color none;
+
+    &:hover .icon {
+      opacity: 1;
+    }
+  }
+
+  .ui.buttons & {
+    border-radius: 0;
+    font-size: rem(10px);
+
+    + & {
+      margin-left: rem(4px);
+    }
+
+    &:first-child {
+      border-top-left-radius: rem($border-radius);
+      border-bottom-left-radius: rem($border-radius);
+    }
+
+    &:last-child {
+      border-top-right-radius: rem($border-radius);
+      border-bottom-right-radius: rem($border-radius);
+    }
+  }
+
+  &.text {
+    &,
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: transparent;
+      color: $menu;
+    }
+
+    &:hover {
+      color: $hover;
+    }
+
+    &.active,
+    &.active:hover {
+      box-shadow: none;
+      color: $hover;
+      background-color: transparent;
+    }
+  }
+
+  &.ui.icon {
+    min-width: initial;
+
+    &.right svg {
+      margin-left: rem(7px);
+    }
+  }
+
+  &.ui.icon.xs {
+    font-size: rem(14px);
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    transition: color $transition-normal, background-color $transition-normal;
+
+    svg.svg-inline--fa.fa-circle {
+      border-radius: 50%;
+      transition: background-color $transition-normal;
+    }
+
+    svg path {
+      transition: fill $transition-normal;
+    }
+
+    &:hover {
+      border: 0;
+      color: $hover !important;
+
+      svg {
+        background-color: fade-out($hover, 0.9);
+        border-radius: 50%;
+      }
+
+      svg path {
+        fill: $hover;
+      }
+    }
+  }
+
+  &.ui.compact,
+  .ui.compact.buttons & {
+    padding: rem(8px 14px);
+    min-width: rem(90px);
+  }
+
+  &.ui.basic,
+  .ui.basic.buttons & {
+    @extend .single-button;
+    box-shadow: none;
+    color: inherit !important;
+
+    &:hover {
+      border: rem(1px) solid $primary;
+      box-shadow: none;
+      color: inherit !important;
+    }
+
+    &.red {
+      border: rem(1px) solid $red;
+      box-shadow: none !important;
+      color: $red !important;
+
+      &:hover {
+        background-color: fade-out($color: $red, $amount: 0.95) !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .ui.menu:not(.vertical) .item > & {
+    padding: rem(9px 14px);
+  }
+
+  &.ui.basic.primary,
+  .ui.basic.primary.buttons & {
+    &,
+    &:focus,
+    &:active {
+      border: rem(1px solid $hover);
+      box-shadow: none !important;
+      color: $hover;
+    }
+
+    &:hover {
+      background-color: lighten($hover, 51.2%) !important;
+      box-shadow: none !important;
+      color: $hover;
+    }
+
+    &.ui:disabled,
+    .ui.buttons &.disabled,
+    &.ui.disabled.active.button,
+    &.ui.disabled.button,
+    &.ui.disabled.button:hover {
+      border-color: $disabled;
+      color: $disabled !important;
+    }
+  }
+}

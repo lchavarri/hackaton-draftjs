@@ -1,0 +1,69 @@
+@mixin clearfix($direction) {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+    clear: $direction;
+  }
+}
+
+@mixin line-clamp($lines) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+}
+
+@mixin icon-button() {
+  &:hover {
+    outline: 0;
+  }
+
+  &.active,
+  &:active {
+    outline: 0;
+  }
+
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+$tray-panels-index: 15;
+
+@mixin right-tray($width) {
+  &.visible {
+    right: 0;
+  }
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -$width - rem(6px);
+  width: $width;
+  background: white;
+  box-shadow: rem(-6px 0 10px 0 rgba(0, 0, 0, 0.05));
+  transition: right $transition-normal;
+  z-index: $tray-panels-index;
+}
+
+@mixin bottom-tray($height) {
+  &.visible {
+    bottom: 0;
+  }
+
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: $height;
+  bottom: -$height - rem(6px);
+  background: white;
+  box-shadow: rem(-6px 0 10px 0 rgba(0, 0, 0, 0.05));
+  transition: bottom $transition-normal;
+  z-index: $tray-panels-index;
+}

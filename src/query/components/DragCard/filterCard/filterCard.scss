@@ -1,0 +1,51 @@
+//imports
+@import '../../../assets/variables';
+
+//filter card
+
+.filter-card-wrapper {
+  .ui.card {
+    border: rem(1px) solid transparent;
+
+    .drag-handle {
+      .right.floated {
+        display: none;
+      }
+
+      .editable-label {
+        width: rem(400px);
+        margin-bottom: rem(5px);
+        &-icon {
+          display: none;
+        }
+      }
+
+      &:hover {
+        .right.floated {
+          display: inline-flex;
+        }
+
+        .editable-label-icon {
+          display: inline-flex;
+        }
+        .edit-mode .editable-label-icon {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.selected > div > .ui.card {
+    border: rem(1px) solid $hover;
+  }
+
+  &.drop-disabled:hover > div > .ui.card {
+    border: rem(1px) solid $red;
+    cursor: not-allowed;
+  }
+
+  &.drop-disabled > div > .ui.card {
+    border: rem(1px) solid $hover;
+    cursor: initial;
+  }
+}

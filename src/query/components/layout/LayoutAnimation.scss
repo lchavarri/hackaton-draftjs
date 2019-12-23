@@ -1,0 +1,71 @@
+@import '../../assets/variables';
+
+//layout animation
+
+.cards-library {
+  transition: opacity 400ms ease-in-out 600ms; //delayed fade-in animation
+}
+
+.drawer-sm.main {
+  .ui.grid > .column.row.path-visible > &.column {
+    padding: 0;
+    min-width: rem(
+      $drawer-width + $sidebar-width
+    ) !important; //override for SUI
+    width: rem($drawer-width) !important; //override for SUI
+
+    //show on Pattern visible
+    visibility: visible;
+    opacity: 1;
+  }
+
+  //hide by default
+  .cards-library {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+.drawer-lg.main {
+  .ui.grid > .row.path-visible.library-visible > &.column {
+    min-width: rem($drawer-width * 2 + $spine-width) !important;
+    padding: 0;
+    width: rem($drawer-width * 2) !important;
+
+    //show on Pattern visible / library visible
+    visibility: visible;
+    opacity: 1;
+  }
+
+  //visible by default
+  .cards-library {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.results-main,
+.drawer {
+  //transition 3 properties to avoid jumps on any resolution
+  transition: width $transition-slow, min-width $transition-slow,
+    opacity $transition-slow 300ms;
+}
+
+.ui.layout {
+  > .main.column.row > .drawer-sm.column {
+    // To override SUI
+    min-width: 0 !important;
+    width: 0 !important;
+    padding: 0;
+
+    //hidden by default
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.flap {
+  transform-origin: left top;
+  transform: rotate(90deg) translateY(-100%);
+}

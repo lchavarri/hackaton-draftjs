@@ -1,0 +1,123 @@
+@import '../../assets/variables';
+
+.ui .dropdown-menu {
+  .ui.dropdown .menu > .item {
+    text-transform: capitalize !important;
+
+    &.not-allowed {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+
+  &.reactAnimate-exit {
+    height: 109px;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: rem(10px);
+    flex-flow: row wrap;
+    margin-left: rem(6px);
+    flex: 25 0;
+
+    .ui.dropdown-md {
+      min-width: rem(144px);
+    }
+
+    .ui.dropdown-sm {
+      min-width: rem(90px);
+    }
+
+    .ui.dropdown {
+      margin-left: 0;
+    }
+
+    .input-md {
+      max-width: rem(145px);
+    }
+
+    .input-sm {
+      max-width: rem(88px);
+    }
+
+    .ui.dropdown > .dropdown.icon {
+      top: rem(7px);
+
+      // Remove SUI font icon
+      &:before {
+        content: none;
+      }
+    }
+
+    > * {
+      + * {
+        margin-left: rem(5px);
+      }
+    }
+  }
+
+  &-label {
+    display: block;
+    margin-bottom: rem(5px);
+    text-transform: capitalize;
+    width: 100%;
+  }
+
+  &-card-wrapper {
+    .dropdown-menu {
+      display: inline-flex;
+      align-items: center;
+      min-height: rem(27px);
+      padding: 0;
+    }
+  }
+
+  .ui.icon.button.xs {
+    align-self: flex-start;
+    flex: 1 0;
+    top: rem(31px);
+    position: relative;
+  }
+}
+
+.ui.card > .content > .description,
+.ui.cards > .card > .content > .description,
+.ui.card > .extra,
+.ui.cards > .card > .extra,
+.ui.card > .extra a:not(.ui),
+.ui.cards > .card > .extra a:not(.ui) {
+  color: inherit;
+}
+
+.ui.selection.active.dropdown .menu {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $border-color;
+  }
+}
+
+.ui.selection.active.dropdown:hover .menu {
+  &,
+  &:focus,
+  &:active {
+    border-color: $border-color;
+  }
+}
+
+.parameter-add {
+  text-transform: capitalize;
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}

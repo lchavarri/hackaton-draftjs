@@ -1,0 +1,49 @@
+@import '../../assets/variables';
+@import '../../assets/mixins';
+
+$message-height: rem(32px);
+.ui.dismissable.message {
+  &.negative {
+    background-color: $error-red;
+    border-color: $error-red;
+    color: $red;
+  }
+  background-color: $secondary-background-color;
+  border-color: $secondary-background-color;
+  box-shadow: none;
+  border-radius: 0;
+  padding: rem(6px 40px 6px 16px);
+  margin-top: 0;
+  margin-bottom: rem(1px);
+  min-height: $message-height;
+  width: 100%;
+  color: $text;
+  p {
+    &.clamped {
+      @include line-clamp(3);
+    }
+    font-size: rem(12px);
+    font-weight: 300;
+    line-height: rem(20px);
+    word-break: break-word;
+  }
+  .icon.close {
+    cursor: pointer;
+    color: $text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: rem(4px);
+    width: rem(32px);
+    height: rem(32px);
+    font-size: rem(12px);
+    &:before {
+      content: '';
+    }
+    svg {
+      width: rem(14px);
+      height: rem(14px);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../assets/variables';
+
+.updated-at {
+  display: flex;
+  font-size: rem(10px);
+
+  div:last-child {
+    margin-left: rem(5px);
+
+    &::before {
+      margin-right: rem(5px);
+      content: '|';
+    }
+  }
+}

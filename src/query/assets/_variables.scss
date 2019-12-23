@@ -1,0 +1,11 @@
+@import '~sass-rem/rem';
+@import '../../shared/ui/assets/variables';
+
+// config for sass-rem
+$rem-baseline: 14px; // default size for semantics-ui
+$rem-px-only: false; // set to true to turn all units to px
+
+// layout variables
+$drawer-width: 450px;
+$spine-width: 41px;
+$sidebar-width: 40px;

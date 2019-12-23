@@ -1,0 +1,65 @@
+.ui.message {
+  color: inherit;
+  box-shadow: none;
+  border: rem(1px solid $eidos-library-borded-color);
+  border-radius: rem(3px);
+
+  //new custom message
+  &.transparent {
+    background-color: transparent;
+    border-color: transparent;
+
+    svg {
+      margin-right: rem(3px);
+      width: rem(14px);
+
+      &.red {
+        path {
+          fill: $red;
+        }
+      }
+    }
+
+    .field + & {
+      padding: 0;
+      margin-top: rem(-11px);
+
+      font-family: $font-default;
+      font-size: rem(12px);
+      font-weight: $font-weight-light;
+    }
+  }
+
+  &.custom-info {
+    font-family: $font-default;
+    color: $menu;
+    background: $background-color;
+    border: rem(1px solid $border-color);
+    border-radius: 0;
+
+    .header {
+      font-size: rem(13px);
+      letter-spacing: rem(0.09px);
+      font-family: inherit;
+    }
+
+    .icon {
+      color: #c4c4c4;
+    }
+  }
+
+  &.centered {
+    padding: rem(20px 21px 15px);
+    text-align: center;
+
+    p {
+      color: $menu;
+      font-size: rem(12px);
+      margin: 0;
+    }
+  }
+
+  .icon.button {
+    margin-right: 0;
+  }
+}

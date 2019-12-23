@@ -1,0 +1,71 @@
+@import "../assets/variables";
+
+.session-manager {
+  color: $text;
+  font-size: rem(16px);
+
+  .ui.grid {
+    background-color: $background-color;
+    margin: 0 auto;
+    width: 100%;
+
+    .session-app-wrapper {
+      height: rem(44px);
+    }
+
+    > .row {
+      padding: 0;
+
+      .column.flex {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  &-status {
+    display: flex;
+    align-items: center;
+  }
+  &-actions {
+    justify-content: flex-end;
+    & > .ui.buttons,
+    & > .ui.button {
+      margin-right: rem(8px);
+    }
+  }
+  &-notifications {
+    display: block;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+$status-indicator-size: rem(14px);
+.status-indicator {
+  width: $status-indicator-size;
+  height: $status-indicator-size;
+  min-width: $status-indicator-size;
+  min-height: $status-indicator-size;
+  border: solid 2px;
+  border-radius: 50%;
+  margin: rem(0 14px 0 16px);
+  &.connected {
+    border-color: $success-green;
+  }
+  &.stopped {
+    border-color: $red;
+    background: $red;
+  }
+  &.busy {
+    animation: spin 600ms infinite linear;
+    border-color: $hover;
+    border-right-color: transparent;
+  }
+}

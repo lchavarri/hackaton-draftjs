@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package eidos;
+
+service CMO {
+  rpc get_all_actions(AllActionsRequest) returns (AllActionsResponse) {}
+}
+
+message AllActionsRequest {
+}
+
+message AllActionsResponse {
+  string result_json = 1;
+}
