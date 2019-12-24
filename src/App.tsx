@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 
 import CustomEditor from "./components/CustomEditor";
 import * as EditorService from "./utils/EditorService";
@@ -6,9 +6,18 @@ import * as EditorService from "./utils/EditorService";
 import "./App.scss";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 
+export type IAppContext = {
+  editorState?: any;
+  mutateEditorState?: (e: EditorState) => void;
+  readOnlyMode?: boolean;
+  setReadOnlyMode?: Function;
+};
+
+export const AppContext = createContext<IAppContext>({});
+
 export default function App() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  //const [timestamp, setTimestamp] = useState(new Date().getTime());
+  const [readOnlyMode, setReadOnlyMode] = useState(false);
 
   useEffect(() => {
     EditorService.connectEditor(
@@ -24,50 +33,24 @@ export default function App() {
     );
   });
 
-  /*
-  let interval;
-  useEffect(() => {
-    interval = setInterval(() => {
-      const storedTimestamp: number = +localStorage.getItem("timestamp");
-      if (storedTimestamp > timestamp) {
-        const storedEditorState = convertFromRaw(
-          JSON.parse(localStorage.getItem("editor"))
-        );
-        setTimestamp(storedTimestamp);
-        setEditorState(EditorState.createWithContent(storedEditorState));
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, [timestamp]);
-  */
-
   function mutateEditorState(newEditorState: EditorState) {
     setEditorState(newEditorState);
 
     const oldRawContent = convertToRaw(editorState.getCurrentContent());
     const newRawContent = convertToRaw(newEditorState.getCurrentContent());
     EditorService.updateEditor("testraw", oldRawContent, newRawContent);
-
-    /*
-
-    const newTimestamp = new Date().getTime();
-
-    localStorage.setItem("timestamp", newTimestamp.toString());
-    localStorage.setItem(
-      "editor",
-      JSON.stringify(convertToRaw(newEditorState.getCurrentContent()))
-    );
-
-    setTimestamp(newTimestamp);
-   */
   }
 
   return (
-    <div className="app-wrapper">
-      <CustomEditor
-        editorState={editorState}
-        mutateEditorState={mutateEditorState}
-      ></CustomEditor>
-    </div>
+    <AppContext.Provider
+      value={{ editorState, mutateEditorState, readOnlyMode, setReadOnlyMode }}
+    >
+      <div className="app-wrapper" onDoubleClick={() => setReadOnlyMode(false)}>
+        <CustomEditor
+          editorState={editorState}
+          mutateEditorState={mutateEditorState}
+        ></CustomEditor>
+      </div>
+    </AppContext.Provider>
   );
 }

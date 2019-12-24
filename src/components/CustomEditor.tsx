@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Editor, RichUtils } from "draft-js";
 
+import { addEntity } from "../utils/DraftUtils";
 import DraftControls from "./DraftControls";
 import CustomBlockRenderer from "./CustomRenderer";
-import { addEntity } from "../utils/DraftUtils";
+import { AppContext } from "../App";
 
 import "../assets/Draft.scss";
 import "../assets/DraftOverrides.scss";
@@ -17,7 +18,9 @@ const customBlockStyler = contentBlock => {
 };
 
 const CustomEditor = (props: any) => {
-  const { editorState, mutateEditorState } = props;
+  const { editorState, mutateEditorState, readOnlyMode } = useContext(
+    AppContext
+  );
 
   const [videoUrl, setVideoUrl] = useState(
     "https://www.youtube.com/embed/9CS7j5I6aOc?autoplay=true"
@@ -95,6 +98,7 @@ const CustomEditor = (props: any) => {
         editorState={editorState}
         onChange={mutateEditorState}
         handleKeyCommand={handleKeyCommand}
+        readOnly={readOnlyMode}
       />
     </div>
   );

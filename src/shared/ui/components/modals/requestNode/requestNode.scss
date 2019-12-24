@@ -1,4 +1,4 @@
-@import '../../../assets/variables';
+@import "../../../assets/variables";
 
 .footer {
   width: 100%;
@@ -10,7 +10,7 @@
   border-top: rem(1px) solid $border-color;
   background-color: $background-color;
 
-  .ui[class*='right floated'] {
+  .ui[class*="right floated"] {
     margin-left: auto;
   }
 }

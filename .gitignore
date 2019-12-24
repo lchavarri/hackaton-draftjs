@@ -4,3 +4,4 @@ build/debug/*
 build/release/*
 .cache
 .vscode
+.DS_Store
